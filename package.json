@@ -1,14 +1,18 @@
 {
-	"name": "tasky",
+  "name": "tasky",
   "version": "1.0.0",
   "description": "A simplified process manager",
   "main": "src/cli.js",
-	"scripts": {
+  "bin": {
+    "tasky": "./src/cli.js"
+  },
+  "scripts": {
     "start": "node src/cli.js"
   },
   "dependencies": {
     "chokidar": "^4.0.1",
     "commander": "^12.1.0",
+    "express": "^4.21.1",
     "ora": "^8.1.1",
     "pidusage": "^3.0.2"
   }

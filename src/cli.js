@@ -1,5 +1,6 @@
+#!/usr/bin/env node
 const { Command } = require('commander');
-const { startProcess, stopProcess, listProcesses } = require('./manager');
+const { startProcess, stopProcess, listProcesses, realtimeLogs } = require('./manager');
 const { monitorProcess } = require('./monitor');
 
 const program = new Command();
@@ -55,11 +56,7 @@ program
     .command('logs <pid>')
     .description('View real-time logs of a process')
     .action((pid) => {
-        const processInfo = [...processes.values()].find((p) => p.pid === Number(pid));
-        if (!processInfo) {
-            console.log(`No process found with PID ${pid}`);
-            return;
-        }
+        const processInfo = realtimeLogs(pid)
         tailLogs(processInfo.logPath);
     });
 
