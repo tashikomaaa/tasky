@@ -22,8 +22,9 @@
 To get started, clone the repository:
 
 ```bash
-git clone https://github.com/your-username/tasky.git
+git clone https://github.com/tashikomaaa/tasky.git
 cd tasky
+bash install.sh
 ```
 
 ### Install Dependencies
@@ -49,7 +50,7 @@ mkdir logs
 Start Tasky with Node.js:
 
 ```bash
-node src/cli.js <command>
+tasky <command>
 ```
 
 ### Available Commands
@@ -59,13 +60,13 @@ node src/cli.js <command>
 Launch a new process by specifying its name and script path:
 
 ```bash
-node src/cli.js start <name> <script>
+tasky start <name> <script>
 ```
 
 Example:
 
 ```bash
-node src/cli.js start my-app ./app.js
+tasky start my-app ./app.js
 ```
 
 #### **Stop a Process**
@@ -73,13 +74,13 @@ node src/cli.js start my-app ./app.js
 Terminate a process by its PID:
 
 ```bash
-node src/cli.js stop <pid>
+tasky stop <pid>
 ```
 
 Example:
 
 ```bash
-node src/cli.js stop 12345
+tasky stop 12345
 ```
 
 #### **List Running Processes**
@@ -87,7 +88,7 @@ node src/cli.js stop 12345
 List all currently running processes:
 
 ```bash
-node src/cli.js list
+tasky list
 ```
 
 Example Output:
@@ -103,7 +104,7 @@ Running processes:
 Monitor CPU and memory usage for a specific process:
 
 ```bash
-node src/cli.js monitor <pid>
+tasky monitor <pid>
 ```
 
 Example Output:
@@ -117,13 +118,13 @@ PID 12345 - CPU: 10.5%, Memory: 32.64 MB
 See the real-time logs for a process:
 
 ```bash
-node src/cli.js logs <pid>
+tasky logs <pid>
 ```
 
 Example:
 
 ```bash
-node src/cli.js logs 12345
+tasky logs 12345
 ```
 
 ---
