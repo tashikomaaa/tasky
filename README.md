@@ -24,7 +24,6 @@ To get started, clone the repository:
 ```bash
 git clone https://github.com/tashikomaaa/tasky.git
 cd tasky
-bash install.sh
 ```
 
 ### Install Dependencies
@@ -32,18 +31,9 @@ bash install.sh
 Install the necessary dependencies with npm:
 
 ```bash
-npm install
+bash install.sh
 ```
 
-### Set Up Logs Directory
-
-Create a `logs/` directory where process logs will be stored:
-
-```bash
-mkdir logs
-```
-
----
 
 ## 📋 Usage
 

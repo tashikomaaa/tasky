@@ -1,6 +1,6 @@
-const pidusage = require('pidusage');
+import pidusage from 'pidusage';
 
-const monitorProcess = (pid) => {
+export const monitorProcess = (pid) => {
   pidusage(pid, (err, stats) => {
     if (err) {
       console.error(`Failed to monitor PID ${pid}: ${err.message}`);
@@ -10,4 +10,3 @@ const monitorProcess = (pid) => {
   });
 };
 
-module.exports = { monitorProcess };

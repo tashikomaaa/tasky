@@ -1,38 +1,30 @@
-const { spawn } = require('child_process');
-const fs = require('fs');
-const path = require('path');
+import { spawn } from 'child_process';
+import fs from 'fs';
+import path from 'path';
 
 const processes = new Map(); // Stores running processes.
 
-const startProcess = (name, script) => {
+export const startProcess = (name, script) => {
     const logPath = path.join(__dirname, `../logs/${name}.log`);
-    let logFile = fs.openSync(logPath, 'a');
-    // fs.exists(logPath, function (exists) {
-    //     if (exists) {
-    //         logFile = fs.openSync(logPath, 'a'); // File descriptor
-    //     } else {
-    //         fs.writeFile(logPath, `========== ${name} LOGS ===============`, { flag: 'wx' }, function (err) {
-    //             if (err) throw err;
-    //             console.log("It's saved!");
-    //         });
-    //         logFile = fs.openSync(logPath, 'a');
-    //     }
-    // })
+    
+    // Ensure log file is opened and appended to, if it exists.
+    const logFile = fs.openSync(logPath, 'a'); // Open file for appending
 
-    const processInstance = spawn('node', [script],
-        {
-            stdout: ['inherit', logFile, logFile], // Correct usage with file descriptors
-            detached: true,
-        });
+    const processInstance = spawn('node', [script], {
+        stdout: logFile,  // Write stdout to log file
+        stderr: logFile,  // Also capture stderr in the same log
+        detached: true,
+    });
 
-    processInstance.unref(); // Ensure the process is not tied to the parent process
+    processInstance.unref(); // Detach process from the parent process
 
+    // Store process information
     processes.set(processInstance.pid, { name, script, pid: processInstance.pid, logPath });
 
     console.log(`Started process '${name}' (PID: ${processInstance.pid})`);
 };
 
-const stopProcess = (pid) => {
+export const stopProcess = (pid) => {
     const processInfo = processes.get(pid);
 
     if (!processInfo) {
@@ -42,14 +34,14 @@ const stopProcess = (pid) => {
 
     try {
         process.kill(pid);
-        processes.delete(pid);
+        processes.delete(pid); // Remove from process map
         console.log(`Stopped process '${processInfo.name}' (PID: ${pid})`);
     } catch (err) {
         console.error(`Failed to stop process with PID ${pid}: ${err.message}`);
     }
 };
 
-const listProcesses = () => {
+export const listProcesses = () => {
     if (processes.size === 0) {
         console.log('No running processes.');
         return;
@@ -61,18 +53,19 @@ const listProcesses = () => {
     });
 };
 
-const realtimeLogs = (pid) => {
+export const realtimeLogs = (pid) => {
     const processInfo = [...processes.values()].find((p) => p.pid === Number(pid));
     if (!processInfo) {
         console.log(`No process found with PID ${pid}`);
         return;
     }
-    return processInfo;
-}
 
-module.exports = {
-    startProcess,
-    stopProcess,
-    listProcesses,
-    realtimeLogs
+    // Return the log path for real-time access
+    console.log(`Real-time logs for PID ${pid}:`);
+    const logFile = fs.createReadStream(processInfo.logPath, { encoding: 'utf-8' });
+    logFile.on('data', (chunk) => {
+        process.stdout.write(chunk);  // Output the logs to console
+    });
+
+    return processInfo;
 };

@@ -1,6 +1,7 @@
 {
   "name": "tasky",
   "version": "1.0.0",
+  "type": "module",
   "description": "A simplified process manager",
   "main": "src/cli.js",
   "bin": {
@@ -10,9 +11,11 @@
     "start": "node src/cli.js"
   },
   "dependencies": {
+    "chalk": "^4.1.2",
     "chokidar": "^4.0.1",
     "commander": "^12.1.0",
     "express": "^4.21.1",
+    "figlet": "^1.8.0",
     "ora": "^8.1.1",
     "pidusage": "^3.0.2"
   }
