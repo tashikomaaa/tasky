@@ -1,22 +1,25 @@
-# Tasky
 
-**Tasky** is a simplified process manager. It helps you manage, monitor, and persist Node.js and other processes with an intuitive command-line interface. With features like real-time log viewing and process monitoring, Tasky is ideal for lightweight application management.
+# Tasky 🎯
 
----
-
-## Features
-
-- Start, stop, and manage processes.
-- Real-time resource monitoring (CPU and memory usage).
-- Real-time log viewing.
-- Persistent process information.
-- Lightweight and easy to use.
+**Tasky** is a lightweight process manager for Node.js applications and other processes. With an intuitive command-line interface, it helps you easily manage, monitor, and track your processes in real time. Ideal for simple use cases and smaller applications.
 
 ---
 
-## Installation
+## 🚀 Features
+
+- **Start, Stop, and Manage Processes**: Control your applications with simple commands.
+- **Real-Time Resource Monitoring**: Track CPU and memory usage on the fly.
+- **Live Log Viewing**: View real-time logs of your processes.
+- **Persistent Process Information**: Logs and process data are saved for later reference.
+- **Lightweight & Intuitive**: Simple, fast, and easy-to-use tool for process management.
+
+---
+
+## 🛠️ Installation
 
 ### Clone the Repository
+
+To get started, clone the repository:
 
 ```bash
 git clone https://github.com/your-username/tasky.git
@@ -25,13 +28,15 @@ cd tasky
 
 ### Install Dependencies
 
+Install the necessary dependencies with npm:
+
 ```bash
 npm install
 ```
 
 ### Set Up Logs Directory
 
-Ensure a `logs/` directory exists in the root project folder:
+Create a `logs/` directory where process logs will be stored:
 
 ```bash
 mkdir logs
@@ -39,9 +44,9 @@ mkdir logs
 
 ---
 
-## Usage
+## 📋 Usage
 
-Run the CLI tool using Node.js:
+Start Tasky with Node.js:
 
 ```bash
 node src/cli.js <command>
@@ -50,7 +55,8 @@ node src/cli.js <command>
 ### Available Commands
 
 #### **Start a Process**
-Start a new process by providing a name and script path:
+
+Launch a new process by specifying its name and script path:
 
 ```bash
 node src/cli.js start <name> <script>
@@ -63,7 +69,8 @@ node src/cli.js start my-app ./app.js
 ```
 
 #### **Stop a Process**
-Stop a process by its PID:
+
+Terminate a process by its PID:
 
 ```bash
 node src/cli.js stop <pid>
@@ -76,7 +83,8 @@ node src/cli.js stop 12345
 ```
 
 #### **List Running Processes**
-View all running processes:
+
+List all currently running processes:
 
 ```bash
 node src/cli.js list
@@ -91,6 +99,7 @@ Running processes:
 ```
 
 #### **Monitor a Process**
+
 Monitor CPU and memory usage for a specific process:
 
 ```bash
@@ -104,7 +113,8 @@ PID 12345 - CPU: 10.5%, Memory: 32.64 MB
 ```
 
 #### **View Real-Time Logs**
-View the real-time logs for a specific process:
+
+See the real-time logs for a process:
 
 ```bash
 node src/cli.js logs <pid>
@@ -118,7 +128,7 @@ node src/cli.js logs 12345
 
 ---
 
-## Development
+## 🧑‍💻 Development
 
 ### Project Structure
 
@@ -134,47 +144,50 @@ tasky/
 ```
 
 ### Add New Features
-- To add new commands, modify `src/cli.js` and implement the logic in `src/manager.js` or a new module.
-- Follow the modular design pattern for maintainability.
+
+- Modify `src/cli.js` to add new commands.
+- Implement new functionality in `src/manager.js` or a separate module.
+- Follow the modular design for maintainability.
 
 ### Testing
-Test the application locally by running multiple commands and observing logs, resource usage, and process management behavior.
+
+To test, run multiple commands and observe logs, resource usage, and process management behavior.
 
 ---
 
-## Roadmap
+## 🗺️ Roadmap
 
 ### Planned Features
-- Clustering support for scaling applications across CPU cores.
-- Log filtering and search capabilities.
-- Integration with Docker for containerized process management.
-- API for remote process control.
+
+- **Clustering Support**: Scale applications across multiple CPU cores.
+- **Log Filtering & Search**: Advanced log filtering and search capabilities.
+- **Docker Integration**: Manage processes running inside Docker containers.
+- **Remote API**: API support for managing processes remotely.
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
-Contributions are welcome! To contribute:
+We welcome contributions! To contribute:
 
 1. Fork the repository.
 2. Create a new branch for your feature or bugfix.
-3. Submit a pull request with detailed explanations of your changes.
+3. Open a pull request with a detailed description of your changes.
 
 ---
 
-## License
+## 📝 License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-## Acknowledgments
-
-This project was inspired by [PM2](https://pm2.keymetrics.io/), a robust process manager for Node.js. tasky is a lightweight alternative for simpler use cases.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 ---
 
-## Contact
+## 💬 Acknowledgments
 
-For questions or feedback, feel free to contact [Aldwin moutarlier](mailto:tashikomaa@gmail.com).
+Inspired by [PM2](https://pm2.keymetrics.io/), **Tasky** is a lightweight alternative for managing Node.js processes.
 
+---
+
+## 📬 Contact
+
+For questions or feedback, feel free to contact [Aldwin Moutarlier](mailto:tashikomaa@gmail.com).
